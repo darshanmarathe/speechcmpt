@@ -31,6 +31,36 @@ class VoiceChat extends Component {
     });
   }
 
+ textToSpeech(file) {
+    var myHeaders = new Headers();
+    myHeaders.append("FID-LOG-TRACKING-ID", "IAM_WAS_HERE");
+    myHeaders.append("VX-SB-APPID", "AP139709");
+    myHeaders.append("BIT", "16");
+    myHeaders.append("Authorization", "Bearer EUA3ah3FQ7YRpyf3tJhEe0tN8rFWafDKss8hG09UEKn9fi1bVYlJ5j");
+    myHeaders.append("Cookie", "MC=9bKZDfxJ_sJq_DWfHxGe1VFUJEcSAmRj6PP5qnMpgeRo39viqjMGBAAAAQAGBWRj6PMAQ03");
+
+    var formdata = new FormData();
+    formdata.append("audiofile", file, "Audio1.wav");
+
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: formdata,
+        redirect: 'follow'
+    };
+    this.setState({message : 'parsing'}) 
+    fetch("https://simplibyt-xq1-aws.fmr.com/v1/simplibytes/stt/instant", requestOptions)
+        .then(response => response.text())
+        .then(result => {
+            console.log(result);
+            this.setState({
+              currentMessage : result,
+              message : ''
+            })
+        })
+        .catch(error => console.log('error', error));
+}
+
   start() {
     this.mediaRecorder.start();
     this.audiofile = null;
@@ -74,15 +104,15 @@ class VoiceChat extends Component {
 
       this.fireEvent('recored' , this.audiofile);
      
-     if(this.props.recognizefunc != null){
-      try {
-        const text   = await this.props.recognizefunc(this.audiofile)
-        this.setState({currentMessage : text})
-        this.fireEvent('send' , text)
-      } catch (error) {
-        this.currentMessage({currentMessage : error})
-      }
-     }
+    //  if(this.props.recognizefunc != null){
+    //   try {
+    //     const text   = await this.props.recognizefunc(this.audiofile)
+    //     this.setState({currentMessage : text})
+    //     this.fireEvent('send' , text)
+    //   } catch (error) {
+    //     this.currentMessage({currentMessage : error})
+    //   }
+    //  }
        textToSpeech(wavblob)
 
       //            if (e.data.size > 0) recordedChunks.push(e.data)
