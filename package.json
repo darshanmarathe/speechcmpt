@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "componentforge": "^1.1.29",
+    "siriwave": "^2.3.0",
     "wavefile": "^11.0.0"
   },
   "devDependencies": {
