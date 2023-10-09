@@ -12,12 +12,16 @@ export default class Siri extends Component {
   }
 
   constructor() {
-    super(true, {});
+    const _props = {
+      width: 200,
+      height: 100,
+    };
+    super(true, _props);
   }
   ComponentDidMount() {
     setTimeout(() => {
       const elem = this.root.getElementById("siri");
-      const SW = new SiriWave({
+      new SiriWave({
         container: elem,
         autostart: true,
       });
@@ -28,8 +32,8 @@ export default class Siri extends Component {
     return html`
       <style>
         #siri {
-          width: ${this.props.width ? this.props.width : '400px'} ;
-          height: ${this.props.height ? this.props.height : '100px'};
+          width: ${this.props.width + "px"};
+          height: ${this.props.height + "px"};
           background-size: cover;
           margin: 20px;
           margin: 0 auto;
@@ -37,12 +41,12 @@ export default class Siri extends Component {
           border: 1px dashed rgba(255, 255, 255, 0.4);
         }
 
-        #siri canvas{
-          float:left;
+        #siri canvas {
+          float: left;
         }
       </style>
     `;
   }
 }
 
-Tag("siri-wave", Siri);
+Tag("fid-siri-wave", Siri);

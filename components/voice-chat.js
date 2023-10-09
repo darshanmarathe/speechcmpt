@@ -220,5 +220,5 @@ export default class VoiceChat extends Component {
   }
 }
 
-Tag("voice-chat", VoiceChat);
+Tag("fid-voice-chat", VoiceChat);
 
