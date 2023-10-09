@@ -18,12 +18,26 @@ export default class Siri extends Component {
     };
     super(true, _props);
   }
+
+  ComponentDidReceiedProps(prop ,newProp , oldProp){
+    console.log(prop , newProp , oldProp)
+    const elem = this.root.getElementById("siri");
+    elem.innerHTML = ''; 
+    this.siri  = new SiriWave({
+      container: elem,
+      autostart: true,
+      width: this.props.width,
+      height: this.props.height
+    });
+  }
   ComponentDidMount() {
     setTimeout(() => {
       const elem = this.root.getElementById("siri");
-      new SiriWave({
+    this.siri  = new SiriWave({
         container: elem,
         autostart: true,
+        width: this.props.width,
+        height: this.props.height
       });
     }, 100);
   }

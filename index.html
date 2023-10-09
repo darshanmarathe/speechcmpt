@@ -13,12 +13,17 @@
  </ul>
 <!-- <voice-chat id="voice" label="Type or record audio to send" token="4wzn2jQ1a97nc4Y4AOObjDQgw0pAZcGQsKU2ePGRiW1kJ0wBHxBZCn"></voice-chat> -->
 
-<fid-siri-wave width="200" height="100"></fid-siri-wave>
+<fid-siri-wave width="200" height="100" id="siri"></fid-siri-wave>
     <!-- <script type="module" src="/components/Index.js"></script> -->
     <script type="module" src="/components/Index.js"></script>
 
 
     <script>
+
+setTimeout(() => {
+    document.getElementById('siri').width = 400;
+    document.getElementById('siri').height = 200;
+}, 5000);
 
         // var voice = document.querySelector('#voice');
         // var chat = document.querySelector('#chat')
