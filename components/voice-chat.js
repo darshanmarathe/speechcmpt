@@ -6,8 +6,6 @@ import {
 } from "https://cdn.jsdelivr.net/npm/componentforge";
 import { WaveFile } from "wavefile/dist/wavefile";
 
-import MediaRecorder from "./Speech/Index.js";
-import Siri from "./Siri.js";
 export default class VoiceChat extends Component {
   mediaRecorder = null;
   audiofile = null;
@@ -184,8 +182,12 @@ export default class VoiceChat extends Component {
         ${this.state.showPlay ? html`<a id="download">Download</a>` : null}
 
         <button @click=${() => this.send()} id="send">send</button>
-        ${this.state.isRecording
-          ? html`<button @click=${() => this.stop()} id="stop">Stop</button>`
+
+
+      ${this.state.isRecording
+          ? html`<button @click=${() => this.stop()} id="stop">Stop</button>
+          <fid-wave  width="200" height="100" id="siri"></fid-wave>
+          `
           : html`<button @click=${() => this.start()} id="start">
               Start
             </button>`}
